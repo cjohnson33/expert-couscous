@@ -3,4 +3,5 @@ def mainmenu():
     print "2. Improved Euler's Method"
     print "3. Runge-Katta Method"
     print "4. Quit Program"
-mainmenu()
+if __name__ == "__main__":
+    mainmenu()
