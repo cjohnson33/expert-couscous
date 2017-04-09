@@ -3,6 +3,8 @@ from __future__ import division
 def eulers():
     f = raw_input("Enter equation to be approximated \n y'= ")
     def funcF(a,b):
+        x = a
+        y = b
         return eval(f)
     x = float(eval(raw_input("Enter inital x value\n ")))
     y = float(eval(raw_input("Enter inital y value\n ")))
