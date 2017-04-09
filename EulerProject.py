@@ -1,3 +1,4 @@
+from linear_approx import Euler
 def mainmenu():
     done = False
     while not done:
@@ -8,7 +9,7 @@ def mainmenu():
         try:
             selection = int(raw_input("Select an option: "))
             if selection == 1:
-                pass #insert euler's method function
+                Euler.eulers()
             elif selection == 2:
                 pass
             elif selection == 3:
