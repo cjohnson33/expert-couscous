@@ -1,32 +1,52 @@
-from __future__ import division
-import numpy
-print "Classical Fourth-Order Runge-Kutta Method"
-#obtain function, initial values, goal value, and iterations/steps
-f = raw_input("Enter equation to be approximate \n y'= ")
-def funcF(a,b):
-    x = a
-    y = b
-    return eval(f)
-def k1(x, y, h):
-    return h * funcF(x, y)
-def k2(x, y, h):
-    return h * funcF(x + h/2, y + k1(x, y, h)/2)
-def k3(x, y, h):
-    return h * funcF(x + h/2, y + k2(x, y , h)/2)
-def k4(x, y, h):
-    return h * funcF(x + h, y+ k3(x, y, h))
-a = float(eval(raw_input("Enter inital x value\n ")))
-b = float(eval(raw_input("Enter inital y value\n ")))
-g = float(eval(raw_input("Enter x value to approximate y at\n ")))
-n = eval((raw_input("Enter a positive integer for the number of steps\n ")))
-while type(n) != int or n <=0:
-    n = eval((raw_input("Enter a positive integer for the number of steps\n ")))
-h = (g - a) / n
-x = a
-y = b
-print '\n', "%-15s %-15s" % ('x=', 'y=')
-for i in range(n):
-    print "%-15s %-15s" % (x, y)
-    y = y + (1/6) * (k1(x, y, h) + 2 * k2(x, y, h) + 2 * k3(x, y, h) + k4(x, y, h))
-    x = x + h
-print "%-15s %-15s" % (x, y)
+def rungeKutta():
+
+    def BaseMethodInputs():
+        equation = raw_input("Enter equation to be approximated \n y'= ")
+        x = float(raw_input("Enter inital x value\n "))
+        y = float(raw_input("Enter inital y value\n "))
+        xFinal = float(raw_input("Enter x value to approximate y at\n "))
+        iterations = int(raw_input("Enter a positive integer for the number of steps\n "))
+        printSelection = printMenu()
+        return [equation, x, y, xFinal, iterations, printSelection]
+
+    def printMenu():
+        done = False
+        while not done:
+            print "1. Print all values throughout computation"
+            print "2. Print only final approximation from method"
+            try:
+                selection = int(raw_input("Select an option: "))
+                if selection == 1:
+                    return 1
+                elif selection == 2:
+                    return 0
+                else:
+                    raise ValueError()
+            except ValueError:
+                print "\nInvalid Selection"
+
+    def userFunction(xValue, yValue, equation):
+        x = xValue
+        y = yValue
+        return eval(equation)
+
+    def k1(x, y, stepSize, equation):
+        return stepSize * userFunction(x, y, equation)
+    def k2(x, y, stepSize, equation):
+        return stepSize * userFunction(x + stepSize / 2, y + k1(x, y, stepSize, equation) / 2, equation)
+    def k3(x, y, stepSize, equation):
+        return stepSize * userFunction(x + stepSize / 2, y + k2(x, y , stepSize, equation) / 2, equation)
+    def k4(x, y, stepSize, equation):
+        return stepSize * userFunction(x + stepSize, y + k3(x, y, stepSize, equation), equation)
+
+    def rungeKuttaMethod(equation, x, y, xFinal, iterationCount, printOption):
+        stepSize = (xFinal - x) / float(iterationCount)
+        print '\n', "%-15s %-15s" % ('x=', 'y=')
+        for n in range(iterationCount):
+            if printOption == 1:
+                print "%-15s %-15s" % (x, y)
+            y = y + (1/6.0) * (k1(x, y, stepSize, equation) + 2 * k2(x, y, stepSize, equation) + 2 * k3(x, y, stepSize, equation) + k4(x, y, stepSize, equation))
+            x = x + stepSize
+        print "%-15s %-15s" % (x, y)
+
+    rungeKuttaMethod(*BaseMethodInputs())

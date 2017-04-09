@@ -1,5 +1,5 @@
 def eulers():
-    
+
     def BaseMethodInputs():
         equation = raw_input("Enter equation to be approximated \n y'= ")
         x = float(raw_input("Enter inital x value\n "))
@@ -23,7 +23,7 @@ def eulers():
                 else:
                     raise ValueError()
             except ValueError:
-                print "\nInvalid Selection\n"
+                print "\nInvalid Selection"
 
     def userFunction(xValue,yValue, equation):
         x = xValue

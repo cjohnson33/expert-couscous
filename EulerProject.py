@@ -1,11 +1,13 @@
 from linear_approx import Euler
+from linear_approx import ImprovedEuler
+from linear_approx import RungeKutta
 def mainmenu():
     done = False
     while not done:
         print "\nMain Menu"
         print "1. Euler's Method"
         print "2. Improved Euler's Method"
-        print "3. Runge-Katta Method"
+        print "3. Runge-Kutta Method"
         print "4. Quit Program"
         try:
             selection = int(raw_input("Select an option: "))
@@ -14,13 +16,13 @@ def mainmenu():
             elif selection == 2:
                 ImprovedEulerMenu()
             elif selection == 3:
-                RungeKattaMenu()
+                RungeKuttaMenu()
             elif selection == 4:
                 quit()
             else:
                 raise ValueError()
         except ValueError:
-            print "\nInvalid Selection\n"
+            print "\nInvalid Selection"
 def ImprovedEulerMenu():
     done = False
     while not done:
@@ -32,7 +34,7 @@ def ImprovedEulerMenu():
         try:
             selection = int(raw_input("Select an option: "))
             if selection == 1:
-                pass
+                ImprovedEuler.eulerImproved()
             elif selection == 2:
                 pass
             elif selection == 3:
@@ -42,19 +44,19 @@ def ImprovedEulerMenu():
             else:
                 raise ValueError()
         except ValueError:
-            print "\nInvalid Selection\n"
-def RungeKattaMenu():
+            print "\nInvalid Selection"
+def RungeKuttaMenu():
     done = False
     while not done:
         print "\n"
-        print "1. Base Runge-Katta Method"
-        print "2. Runge-Katta Method with Tolerance Based on Absolute Error"
-        print "3. Runge-Katta Method with Tolerance Based on Relative Error"
+        print "1. Base Runge-Kutta Method"
+        print "2. Runge-Kutta Method with Tolerance Based on Absolute Error"
+        print "3. Runge-Kutta Method with Tolerance Based on Relative Error"
         print "4. Return to Main Menu"
         try:
             selection = int(raw_input("Select an option: "))
             if selection == 1:
-                pass
+                RungeKutta.rungeKutta()
             elif selection == 2:
                 pass
             elif selection == 3:
@@ -64,6 +66,6 @@ def RungeKattaMenu():
             else:
                 raise ValueError()
         except ValueError:
-            print "\nInvalid Selection\n"
+            print "\nInvalid Selection"
 if __name__ == "__main__":
     mainmenu()
