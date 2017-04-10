@@ -1,7 +1,6 @@
 from linear_approx import Euler
 from linear_approx import ImprovedEuler
 from linear_approx import RungeKutta
-from linear_approx import RelImprovedTolerance
 def mainmenu():
     done = False
     while not done:
@@ -39,7 +38,7 @@ def ImprovedEulerMenu():
             elif selection == 2:
                 pass
             elif selection == 3:
-                RelImprovedTolerance.relImproved()
+                pass
             elif selection == 4:
                 mainmenu()
             else:
