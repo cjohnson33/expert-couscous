@@ -16,7 +16,7 @@ g = float(eval(raw_input("Enter x value to approximate y at\n ")))
 while type(m) != int or m <=0:
     m = eval((raw_input("Enter maximum number of halvings of step size\n ")))
 print '\n'
-z = a
+z = b
 for q in range(m):
     n = 2**q
     h = (g - a) / n

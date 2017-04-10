@@ -30,7 +30,7 @@ def eulerImproved():
         y = yValue
         return eval(equation)
 
-    def eulersImprovedMethod(equation, x, y, xFinal, iterationCount, printOption):
+    def eulersImprovedMethod(equation, x, y, xFinal, iterationCount, printOption, print2 = 1):
         stepSize = (xFinal - x) / float(iterationCount)
         print '\n', "%-15s %-15s" % ('x=', 'y=')
         for n in range(iterationCount):
@@ -39,8 +39,9 @@ def eulerImproved():
             y = (y + stepSize
             * (userFunction(x, y, equation)
             + userFunction(x + stepSize, y + stepSize
-            * userFunction(x, y, equation), equation)) / 2)
+            * userFunction(x, y, equation), equation)) / 2.0)
             x = x + stepSize
-        print "%-15s %-15s" % (x, y)
+        if print2 == 1:
+            print "%-15s %-15s" % (x, y)
 
     eulersImprovedMethod(*BaseMethodInputs())

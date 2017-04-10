@@ -30,7 +30,7 @@ def eulers():
         y = yValue
         return eval(equation)
 
-    def eulersMethod(equation, x, y, xFinal, iterationCount, printOption):
+    def eulersMethod(equation, x, y, xFinal, iterationCount, printOption, print2 = 1):
             stepSize = (xFinal - x) / float(iterationCount)
             print '\n', "%-15s %-15s" % ('x=', 'y=')
             for n in range(iterationCount):
@@ -38,6 +38,7 @@ def eulers():
                     print "%-15s %-15s" % (x, y)
                 y = y + stepSize * userFunction(x, y, equation)
                 x = x + stepSize
-            print "%-15s %-15s" % (x, y)
+            if print2 == 1:
+                print "%-15s %-15s" % (x, y)
 
     eulersMethod(*BaseMethodInputs())

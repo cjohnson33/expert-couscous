@@ -28,8 +28,8 @@ def ImprovedEulerMenu():
     while not done:
         print "\n"
         print "1. Base Improved Euler's Method"
-        print "2. Improved Euler's Method with Tolerance Based on Absolute Error"
-        print "3. Improved Euler's Method with Tolerance Based on Relative Error"
+        print "2. Improved Euler's Method with Tolerance - Stopping Based on Absolute Error"
+        print "3. Improved Euler's Method with Tolerance - Stopping Based on Relative Error"
         print "4. Return to Main Menu"
         try:
             selection = int(raw_input("Select an option: "))
@@ -50,8 +50,8 @@ def RungeKuttaMenu():
     while not done:
         print "\n"
         print "1. Base Runge-Kutta Method"
-        print "2. Runge-Kutta Method with Tolerance Based on Absolute Error"
-        print "3. Runge-Kutta Method with Tolerance Based on Relative Error"
+        print "2. Runge-Kutta Method with Tolerance - Stopping Based on Absolute Error"
+        print "3. Runge-Kutta Method with Tolerance - Stopping Based on Relative Error"
         print "4. Return to Main Menu"
         try:
             selection = int(raw_input("Select an option: "))
