@@ -1,0 +1,73 @@
+\documentclass[12pt, letterpaper]{report}
+\usepackage[utf8]{inputenc}
+
+\title{Numerical Evaluation of Differential Equations: An Exploration}
+\author{Cole Johnson}
+\date{April 2017}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+    This document details my exploration of computer coding of both python and LaTeX. Together these were used to explore numerical methods of solving differential equations. This report serves to document my findings and results.
+\end{abstract}
+
+The textbook offers perhaps the most basic and classic example of a differential equation \(y'=y\). As such, it seems suitable that this be the first differential that is examined herein.
+
+To begin, first examine analytical solution to the differential equation \(y'=y\).
+\[y'=y\]can be written as \[\frac{dy}{dx}=y\] using separation of variables gives \[\frac{1}{y}dy=dx\] integrating both sides yields \[\ln{y}=x\] and finally solving for y gives \[y=e^x\]
+
+Next, we can examine the numerical approximations through the different methods presented by the text: Euler's Method, the Improved Euler's Method, and the Classical-Fourth Order Runge-Kutta Method.
+
+Using initial values of \(x=0, y=0\) and a final value of \(x=1\) and 1000 iterations we will compare the outcomes of the three separate methods to the expected answer.
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+    \hline
+    \(x=\) & \(y\)= & Euler's Method & Improved Euler's & Runge-Kutta \\
+    \hline
+    0 & 1 & 1 & 1 & 1 \\
+    \hline
+    1 & \(e\) & 2.71692393224 & 2.71828137575 & 2.71828182846 \\
+    \hline
+    \multicolumn{2}{|c|}{\textbf{\% Error}} & .049954 & 1.6654 x \(10^{-5}\) & 3.6788 x \(10^{-11}\) \\
+    \hline
+\end{tabular}
+\(e=2.718281828549\)
+\end{center}
+
+While all of the methods are able to approximate the answer to less than half a percent, it is apparent that the accuracy improvement for each subsequent method is of several orders of magnitude greater.
+
+Additional to these methods, the program also has code to approximate values based on the desired level of accuracy. Using the same equation and initial values as before but instead specifying and accuracy of .0001 yields the following results:
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+    \hline
+    \multicolumn{2}{|c|}{} & Euler's Method & Improved Euler's & Runge-Kutta \\
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Iterations}} & 16384 & 128 & 8 \\
+    \hline
+\end{tabular}
+\end{center}
+
+Here the speed of convergence of each method is illustratively shown by the step size necessary for the desired accuracy level.
+
+Lastly, the extrapolation accuracy of each method can be evaluated. For this calculation we will use the same initial values and 1000 iterations but will instead use a final value of \(x=1\). \(e^{100}\)).
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+    \hline
+    \(x=\) & \(y\)= & Euler's Method & Improved Euler's & Runge-Kutta \\
+    \hline
+    0 & 1 & 1 & 1 & 1 \\
+    \hline
+    100 & \(e^{100}\) & 2.46993 x \(10^{41}\) & 2.30292 x \(10^{43}\) & 2.68791 x \(10^{43}\) \\
+    \hline
+    \multicolumn{2}{|c|}{\textbf{\% Error}} & 99.081 & 14.330 & .0076675 \\
+    \hline
+\end{tabular}
+\(e^{100}=2.688117142\) x \(10^{43}\)
+\end{center}
+
+Once more, the accuracy and versatility of these methods is clearly displayed. It is for this reason that the method's described are intended to be utilized for close x values and see improved accuracy as the iteration count increases.
+\end{document}
